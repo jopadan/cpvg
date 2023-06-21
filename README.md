@@ -1,5 +1,5 @@
 # rw_progress_bar
-[fread:fwrite]_progress_bar buffered block stdio functions supporting status progress bar
+C/C++ [fread:fwrite]_progress_bar buffered block stdio functions supporting status progress bar
 
 # Usage
 ```c

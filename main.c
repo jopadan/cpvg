@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 {
 	if(argc < 2)
 	{
-		fprintf(stderr, "Usage: %s SRC\nBuffered block file IO with progress status bar\n\nThe SRC argument is the filename path",argv[0]);
+		fprintf(stderr, "Usage: %s FILE [FILE]\nBuffered block stdio with progress status bar\n\nThe FILE argument is an input/output filename\n",argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 	size_t read = 0;
 	size_t written = 0;
 	void* buf = malloc(len);
-	
+
 	atexit(cleanup);
 
 	/* read from src */

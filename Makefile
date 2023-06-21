@@ -16,10 +16,8 @@ endif
 
 all: $(PROGRAM)
 
-$(PROGRAM): $(PROGRAM)$(OBJECT_EXT)
-	$(GCC) $(CFLAGS) -o $(PROGRAM) progress.c main.c
-
-
+$(PROGRAM):
+	$(GCC) $(CFLAGS) -o $(PROGRAM) main.c
 clean:
 	$(RM) -rf $(PROGRAM)$(OBJECT_EXT) $(PROGRAM)$(EXECUTABLE_EXT)
 

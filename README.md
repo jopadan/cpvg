@@ -6,10 +6,10 @@ Single-file header C/C++ [fread:fwrite]_progress_bar buffered block stdio functi
 #include "progress.h"
 
 FILE* ifp = fopen(filename, "rb");
-size_t read    =  fread_progress_bar(ptr, filename, size, block_size, ifp, width);
+size_t read    =  fread_progress_bar(ptr, filename, size, block_size, ifp, width, '=', ' ');
 fclose(ifp);
 FILE* ofp = fopen(filename, "rw");
-size_t written = fwrite_progress_bar(ptr, filename, size, block_size, ofp, width);
+size_t written = fwrite_progress_bar(ptr, filename, size, block_size, ofp, width, '=', ' ');
 fclose(ofp);
 ```
 # Examples

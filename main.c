@@ -27,12 +27,12 @@ int main(int argc, char** argv)
 
 	/* read from src */
 	FILE* ifp = fopen(src, "rb");
-	if((read = fread_progress_bar(buf, src, len, 8192, ifp)) != len)
+	if((read = fread_progress_bar(buf, src, len, 8192, ifp, 40)) != len)
 		exit(EXIT_FAILURE);
 
 	FILE* ofp = fopen(dst, "wb");
 	/* write to dst */
-	if((written = fwrite_progress_bar(buf, dst, len, 8192, ofp)) != len)
+	if((written = fwrite_progress_bar(buf, dst, len, 8192, ofp, 40)) != len)
 		exit(EXIT_FAILURE);
 
 	exit((read != len || written != len) ? EXIT_SUCCESS : EXIT_FAILURE);

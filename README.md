@@ -5,8 +5,8 @@ Single-file header C/C++ [fread:fwrite]_progress_bar buffered block stdio functi
 ```c
 #include "progress.h"
 
-size_t read    =  fread_progress_bar(ptr, filename, size, block_size, ifp);
-size_t written = fwrite_progress_bar(ptr, filename, size, block_size, ofp);
+size_t read    =  fread_progress_bar(ptr, filename, size, block_size, ifp, width);
+size_t written = fwrite_progress_bar(ptr, filename, size, block_size, ofp, width);
 ```
 # Examples
 ```sh

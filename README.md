@@ -14,7 +14,7 @@ fclose(ofp);
 ```
 # Examples
 ```sh
-./progress /var/cache/distfiles/test.in /var/cache/distfiles/test.out
+./cpbar /var/cache/distfiles/test.in /var/cache/distfiles/test.out
  /var/cache/distfiles/test.in: [====================100%]      34821768 / Finished!
 /var/cache/distfiles/test.out: [====================100%]      34821768 / Finished!
 ```

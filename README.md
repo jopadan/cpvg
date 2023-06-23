@@ -1,4 +1,4 @@
-88888# rw_progress_bar
+# rw_progress_bar
 Single-file header C/C++ [fread:fwrite]_progress_bar buffered block stdio functions supporting status progress bar
 
 # Usage

@@ -20,8 +20,8 @@ add_link_options(-Wl,--gc-sections)
 add_link_options(-Wl,-s)
 
 # pogress executable
-add_executable(progress main.c progress.h) 
-set_target_properties(progress PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+add_executable(cpbar cpbar.c progress.h) 
+set_target_properties(cpbar PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 install(FILES progress.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 

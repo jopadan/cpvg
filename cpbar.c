@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 	const size_t len = fsize(src);
 	if(len == 0)
 	{
-		fprintf(stderr, "%40s: File is empty!\n", src);
+		fprintf(stderr, "%s: File is empty!\n", src);
 		exit(EXIT_FAILURE);
 	}
 
@@ -37,12 +37,12 @@ int main(int argc, char** argv)
 
 	/* read from src */
 	FILE* ifp = fopen(src, "rb");
-	if((read = fread_progress_bar(buf, src, len, 8192, ifp, 40, '|', '-')) != len)
+	if((read = fread_progress_bar(buf, src, len, 8192, ifp, 40, 20, '|', '-')) != len)
 		exit(EXIT_FAILURE);
 
 	FILE* ofp = fopen(dst, "wb");
 	/* write to dst */
-	if((written = fwrite_progress_bar(buf, dst, len, 8192, ofp, 40, '|', '-')) != len)
+	if((written = fwrite_progress_bar(buf, dst, len, 8192, ofp, 40, 20, '|', '-')) != len)
 		exit(EXIT_FAILURE);
 
 	exit((read != len || written != len) ? EXIT_SUCCESS : EXIT_FAILURE);
@@ -54,7 +54,7 @@ size_t fsize(const char* filename)
 	struct stat sb;
 	if(stat(filename, &sb) == -1)
 	{
-		fprintf(stderr, "%40s: %s\n", filename, strerror(errno));
+		fprintf(stderr, "%s: %s\n", filename, strerror(errno));
 		return 0;
 	}
 

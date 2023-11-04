@@ -5,13 +5,13 @@ buffered variable block size stdio file copy C/C++ function using [FTXUI](http:/
 ```c
 #include "cpvg.h"
 
-size_t written = cpvg("src.in", 131072, "dst.out");
+size_t written = cpvg("src", 131072, "dst");
 
 ```
 
 # Examples
 ```sh
-./cpvg src.in src.out 131072
+./cpvg src dst 131072
 copying:█████████████████████████████████████▋                                   170393600/324785376
 copying:████████████████████████████████████████████████████████████████████████ 324785376/324785376 Finished!
 ```

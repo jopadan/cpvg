@@ -4,30 +4,19 @@
 
 #include "cpvg.h"
 
-size_t fsize(const char* path)
-{
-	struct stat sb;
-	if(stat(path,&sb) == -1)
-	{
-		perror("stat");
-		exit(EXIT_FAILURE);
-	}
-	return sb.st_size;
-}
-
 int main(int argc, char** argv)
 {
-	if(argc < 2)
+	if(argc < 3)
 	{
-		fprintf(stderr, "Usage: %s FILE [FILE]\n", argv[0]);
+		fprintf(stderr, "Usage: %s SRC DST [BLOCK_SIZE]\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
-	char* src = argv[1];
-	char* dst = argv[argc > 2 ? 2 : 1];
-	size_t BLOCK_SIZE = argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : 131072;
-	size_t size = fsize(src); 
+	char*  src = argv[1];
+	char*  dst = argv[2];
+	size_t blk = argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : CPVG_BLOCK_SIZE;
+	size_t sze = fsize(src); 
 
-	size_t copied = cpvg(src, BLOCK_SIZE, dst);
-	exit( copied == size ? EXIT_SUCCESS : EXIT_FAILURE);
+	size_t copied = cpvg(src, blk, dst);
+	exit( copied == sze ? EXIT_SUCCESS : EXIT_FAILURE);
 }

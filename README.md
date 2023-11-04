@@ -13,8 +13,8 @@ int main(int argc, char** argv)
         exit(EXIT_FAILURE);
     }
 
-    exit(cpvg(argv[1], argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : CPVG_BLOCK_SIZE,
-         argv[2]) == fsize(src) ? EXIT_SUCCESS : EXIT_FAILURE);
+    exit(fsize(argv[1]) == cpvg(argv[1], argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : CPVG_BLOCK_SIZE, argv[2])
+         ? EXIT_SUCCESS : EXIT_FAILURE);
 }
 
 ```

@@ -5,11 +5,7 @@ buffered variable block size stdio file copy C/C++ function using [FTXUI](http:/
 ```c
 #include "cpvg.h"
 
-const char* src  = "src.in";
-const char* dst  = "src.out";
-const block_size = 131072;
-
-size_t written = cpvg(src, block_size, dst);
+size_t written = cpvg("src.in", 131072, "dst.out");
 
 ```
 

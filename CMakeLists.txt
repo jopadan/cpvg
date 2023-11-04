@@ -1,13 +1,14 @@
-cmake_minimum_required(VERSION 3.25.0 FATAL_ERROR)
-project(rw_progress_bar LANGUAGES C)
+project(cpvg LANGUAGES C CXX)
 
 set(PROJECT_VERSION 1.0)
-set(PROJECT_DESCRIPTION "rw_progress_bar - single-file header C/C++ [fread:fwrite]_progress_bar buffered block stdio functions supporting status progress bar")
+set(PROJECT_DESCRIPTION "cpvg - C/C++ buffered block stdio file copy function
+using FTXUI gauge/progress for terminal screen status output")
 
 include(GNUInstallDirs)
 
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-march=native -O3)
 add_compile_options(-D_FILE_OFFSET_BITS=64)
 add_compile_options(-fdata-sections)
@@ -19,9 +20,8 @@ add_link_options(-Wl,--gc-sections)
 #add_link_options(-Wl,--print-gc-sections)
 add_link_options(-Wl,-s)
 
-# pogress executable
-add_executable(cpbar cpbar.c progress.h) 
-set_target_properties(cpbar PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+add_executable(${PROJECT_NAME} progress.cpp ${PROJECT_NAME}.c)
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+target_link_libraries(${PROJECT_NAME} PUBLIC -lftxui-dom -lftxui-component -lftxui-screen)
 
-install(FILES progress.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})

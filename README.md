@@ -5,7 +5,16 @@ buffered variable block size stdio file copy C/C++ function using [FTXUI](http:/
 ```c
 #include "cpvg.h"
 
-size_t written = cpvg("src", 131072, "dst");
+int main(int argc, char** argv)
+{
+    if(argc < 3)
+    {
+        fprintf(stderr, "Usage: %s SRC DST [BLK]\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    exit(cpvg(argv[1], argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : CPVG_BLOCK_SIZE, argv[2]) == fsize(src) ? EXIT_SUCCESS : EXIT_FAILURE);
+}
 
 ```
 

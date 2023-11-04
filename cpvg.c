@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 
 	char* src = argv[1];
 	char* dst = argv[argc > 2 ? 2 : 1];
-	size_t BLOCK_SIZE = argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : 16384;
+	size_t BLOCK_SIZE = argc > 3 ? (size_t)strtoq(argv[3], NULL, 10) : 131072;
 	size_t size = fsize(src); 
 
 	size_t copied = cpvg(src, BLOCK_SIZE, dst);

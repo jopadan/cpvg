@@ -1,5 +1,5 @@
 # cpvg - cp/pv with FTXUI gauge/progress terminal status output
-buffered variable block_size stdio copyfile C/C++ function using [FTXUI](http://github.com/ArthurSonzogni/FTXUI) for gauge/progress screen output. 
+buffered variable block size stdio file copy C/C++ function using [FTXUI](http://github.com/ArthurSonzogni/FTXUI) for gauge/progress screen output. 
 
 # Usage
 ```c

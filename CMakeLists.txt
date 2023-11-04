@@ -20,7 +20,7 @@ add_link_options(-Wl,--gc-sections)
 #add_link_options(-Wl,--print-gc-sections)
 add_link_options(-Wl,-s)
 
-add_executable(${PROJECT_NAME} progress.cpp ${PROJECT_NAME}.c)
+add_executable(${PROJECT_NAME} ${PROJECT_NAME}_ftxui.cpp ${PROJECT_NAME}.c)
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC -lftxui-dom -lftxui-component -lftxui-screen)
 

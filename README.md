@@ -8,6 +8,7 @@ buffered variable block_size stdio copyfile C/C++ function using @ArthurSonzogni
 const char* src  = "src.in";
 const char* dst  = "src.out";
 const block_size = 131072;
+
 size_t written = cpvg(src, block_size, dst);
 
 ```

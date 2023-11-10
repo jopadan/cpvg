@@ -10,42 +10,6 @@
 
 #include "cpvg.h"
 
-#define DEFINE_STDIO_BUFFERED_GAUGE(fun, textstr) \
-EXTERNC size_t \
-fun##_buffered_gauge(const void* ptr, size_t size, size_t block_size, FILE* stream) \
-{ \
-  using namespace ftxui; \
-  using namespace std::chrono_literals; \
-\
-  std::string reset_position; \
-  size_t transfered = 0; \
-  for (size_t res = 0; transfered < size; ) { \
-    const size_t len = MIN(size - transfered, block_size); \
-\
-    if((res = (fun((unsigned char*)ptr + transfered, 1, len, stream))) == 0) \
-    	break; \
-    transfered += res; \
-    std::string data_downloaded = std::to_string(transfered) + "/" + std::to_string(size); \
-    auto document = hbox({ \
-        text(textstr), \
-        gauge((float)transfered / (float)(size)) | flex, \
-        text(" " + data_downloaded), \
-    }); \
-    auto screen = Screen(100, 1); \
-    Render(screen, document); \
-    std::cout << reset_position; \
-    screen.Print(); \
-    reset_position = screen.ResetPosition(); \
-    if(res < len) \
-    	break; \
-  } \
-  std::cout << " Finished!" << std::endl; \
-  return transfered; \
-}
-
-DEFINE_STDIO_BUFFERED_GAUGE(fread, "reading:")
-DEFINE_STDIO_BUFFERED_GAUGE(fwrite, "writing:")
-
 EXTERNC size_t cpvg(const char* src, size_t block_size, const char* dst)
 {
 	using namespace ftxui;

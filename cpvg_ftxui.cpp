@@ -14,14 +14,19 @@ EXTERNC size_t cpvg(const char* src, size_t block_size, const char* dst)
 {
 	using namespace ftxui;
 	using namespace std::chrono_literals;
+	std::filesystem::path psrc(src);
+	std::filesystem::path pdst(dst);
 
-	if(!std::filesystem::exists(src))
+	if(!std::filesystem::exists(psrc))
 		return 0;
-	size_t size = std::filesystem::file_size(src);
 
-	FILE* ifp = fopen(src, "rb");
-	FILE* ofp = fopen(dst, "w+b");
-	void* buf = malloc(block_size);
+	if(std::filesystem::is_directory(pdst) && (pdst.filename() != psrc.filename()))
+		pdst += psrc.filename();
+
+	size_t size = fsize(psrc.c_str());
+	FILE* ifp   = fopen(psrc.c_str(), "rb");
+	FILE* ofp   = fopen(pdst.c_str(), "w+b");
+	void* buf   = malloc(block_size);
 
 	std::string reset_position;
 	size_t transfered = 0;
